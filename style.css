@@ -1,0 +1,61 @@
+:root {
+    --bg-color: #191919; /* Matches Notion Dark Mode */
+    --work-color: #ff4d4d;
+    --break-color: #70a1ff;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.timer-container {
+    text-align: center;
+    width: 200px;
+}
+
+.svg-wrapper {
+    margin: 20px 0;
+}
+
+/* Horizontal Wave Animation */
+.wave {
+    transition: transform 1s linear, fill 0.5s ease;
+    animation: moveWave 3s infinite linear;
+}
+
+#wave-back {
+    animation: moveWave 5s infinite linear;
+}
+
+@keyframes moveWave {
+    0% { d: path("M 0 50 Q 25 40 50 50 T 100 50 V 200 H 0 Z"); }
+    50% { d: path("M 0 50 Q 25 60 50 50 T 100 50 V 200 H 0 Z"); }
+    100% { d: path("M 0 50 Q 25 40 50 50 T 100 50 V 200 H 0 Z"); }
+}
+
+/* Button Styling */
+button {
+    background: #333;
+    color: white;
+    border: 1px solid #444;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+button.active {
+    background: #555;
+    border-color: #888;
+}
+
+#start-btn { width: 100%; margin-top: 10px; background: #2ecc71; color: black; border: none; font-weight: bold; }
