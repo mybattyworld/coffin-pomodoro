@@ -1,61 +1,46 @@
 :root {
-    --bg-color: #191919; /* Matches Notion Dark Mode */
+    --bg-color: #191919;
     --work-color: #ff4d4d;
     --break-color: #70a1ff;
     --text-color: #ffffff;
+    --y-pos: 800px; /* Default starting position */
 }
 
 body {
     background-color: var(--bg-color);
-    color: var(--text-color);
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    overflow: hidden;
 }
 
 .timer-container {
+    width: 280px; 
     text-align: center;
-    width: 200px;
 }
 
-.svg-wrapper {
-    margin: 20px 0;
-}
-
-/* Horizontal Wave Animation */
 .wave {
     transition: transform 1s linear, fill 0.5s ease;
-    animation: moveWave 3s infinite linear;
 }
 
-#wave-back {
-    animation: moveWave 5s infinite linear;
+/* Bobbing animation with dynamic Y position from JS */
+#wave-front { animation: bobFront 4s infinite ease-in-out; }
+#wave-back { animation: bobBack 6s infinite ease-in-out; }
+
+@keyframes bobFront {
+    0%, 100% { transform: scale(0.45) translate(-50, var(--y-pos)); }
+    50% { transform: scale(0.45) translate(-50, calc(var(--y-pos) + 20px)); }
 }
 
-@keyframes moveWave {
-    0% { d: path("M 0 50 Q 25 40 50 50 T 100 50 V 200 H 0 Z"); }
-    50% { d: path("M 0 50 Q 25 60 50 50 T 100 50 V 200 H 0 Z"); }
-    100% { d: path("M 0 50 Q 25 40 50 50 T 100 50 V 200 H 0 Z"); }
+@keyframes bobBack {
+    0%, 100% { transform: scale(0.45) translate(-50, var(--y-pos)); }
+    50% { transform: scale(0.45) translate(-50, calc(var(--y-pos) + 40px)); }
 }
 
-/* Button Styling */
+/* Button UI */
 button {
-    background: #333;
-    color: white;
-    border: 1px solid #444;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 12px;
-    border-radius: 4px;
-    margin: 2px;
+    background: #2a2a2a; color: white; border: 1px solid #444;
+    padding: 8px 15px; cursor: pointer; border-radius: 5px; margin: 2px;
 }
-
-button.active {
-    background: #555;
-    border-color: #888;
-}
-
-#start-btn { width: 100%; margin-top: 10px; background: #2ecc71; color: black; border: none; font-weight: bold; }
+#start-btn { width: 100%; background: #2ecc71; color: black; font-weight: bold; margin-top: 10px; border: none; }
